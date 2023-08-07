@@ -162,6 +162,10 @@ section h2 {
   padding-left: 1.6rem;
 }
 
+.recipe-body li {
+  font-size: 0.97rem;
+}
+
 .recipe .footer {
   display: flex;
   align-items: center;
@@ -183,14 +187,13 @@ section h2 {
   background-color: #bb832e;
   color: #fff;
   transition: all 0.3s ease;
-  
+
 }
 
 .recipe button:hover {
     background-color: #fff;
     color: #bb832e;
 }
-
 footer {
   padding: 2rem 0;
   text-align: center;
