@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
     <title>Recipe App</title>
   </head>
   <body>
@@ -35,12 +36,12 @@
         </div>
       </div>
     </header>
-    
+
     <section>
       <div class="container">
         <div class="hero">
-            <h2>All Recipes</h2>
-            <button>Create recipe</button>
+          <h2>All Recipes</h2>
+          <button id="add-form-btn">Create recipe</button>
         </div>
         <p class="recipe-number">Showing <span>5</span> recipes</p>
         <div class="recipes">
@@ -136,5 +137,32 @@
         <p>&copy; Copyright 2023 | Group 2 @cwwtechafrica</p>
       </div>
     </footer>
+
+    <div class="add-form">
+      <header>
+        <div class="container">
+          <h2>Add new Recipe</h2>
+          <button id="close-form-btn">Close</button>
+        </div>
+      </header>
+      <form>
+        <div class="form-field">
+          <label>Title:</label>
+          <input type="text" id="title" />
+        </div>
+        <div class="form-field">
+          <label>Ingredients:</label>
+          <div class="ingredients-box">
+            <input type="text" class="ingredients" />
+            <div class="box"></div>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Title:</label>
+          <textarea rows="7"></textarea>
+        </div>
+        <button>Add recipe</button>
+      </form>
+    </div>
   </body>
 </html>

@@ -10,6 +10,10 @@ body {
   color: #111;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   width: 96%;
   max-width: 1290px;
@@ -19,6 +23,7 @@ body {
 header {
   background-color: #eee;
   padding: 1.5rem 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 header .container {
@@ -163,7 +168,7 @@ section h2 {
 }
 
 .recipe-body li {
-  font-size: 0.97rem;
+  font-size: 0.93rem;
 }
 
 .recipe .footer {
@@ -179,24 +184,83 @@ section h2 {
   color: #333;
 }
 
-.recipe button {
-  cursor: pointer;
+.recipe button,
+.add-form header button,
+form button {
   padding: 0.3rem 0.6rem;
   border-radius: 0.2rem;
   border: 1px solid #bb832e;
   background-color: #bb832e;
   color: #fff;
   transition: all 0.3s ease;
-
 }
 
-.recipe button:hover {
-    background-color: #fff;
-    color: #bb832e;
+.recipe button:hover,
+.add-form header button:hover,
+form button:hover {
+  background-color: #fff;
+  color: #bb832e;
 }
 footer {
   padding: 2rem 0;
   text-align: center;
+}
+
+.add-form {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+  z-index: 10;
+  transition: all 0.5s ease-in-out;
+}
+
+.add-form.show {
+  left: 0;
+}
+
+.add-form header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form {
+  width: 88%;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  appearance: none;
+  border: 1.5px solid #ccc;
+}
+
+form input {
+  padding: 0.7rem 0.3rem;
+}
+
+form textarea {
+  padding: 0.2rem;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #bb832e;
 }
 
 @media (max-width: 768px) {
