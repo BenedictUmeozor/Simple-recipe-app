@@ -209,16 +209,17 @@ footer {
 .add-form {
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   min-height: 100vh;
   background-color: #f2f2f2;
   z-index: 10;
+  display: none;
   transition: all 0.5s ease-in-out;
 }
 
 .add-form.show {
-  left: 0;
+  display: block;
 }
 
 .add-form header .container {
@@ -262,6 +263,52 @@ form textarea:focus {
   outline: none;
   border-color: #bb832e;
 }
+
+.loader {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.loader.show {
+  display: flex;
+}
+
+.loader img {
+  width: 4rem;
+  animation: rotate 1.3s ease-in-out infinite;
+}
+
+.loader-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0.7);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.7);
+  }
+}
+
+/* .procedure {
+  position: fixed;
+  top: 0;
+} */
 
 @media (max-width: 768px) {
   header .container {
