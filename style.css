@@ -238,6 +238,17 @@ footer {
   transition: all 0.5s ease-in-out;
 }
 
+.input-div {
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}
+
+.input-div img {
+  width: 1.8rem;
+  cursor: pointer;
+}
+
 .add-form.show,
 .edit-form.show {
   display: block;

@@ -8,6 +8,7 @@ const formName = form.querySelector("#name");
 const formIngredient = form.querySelector("#ingredients");
 const formProcedure = form.querySelector("#procedure");
 const box = form.querySelector(".box");
+const addIngredientIcon = form.querySelector(".input-div img");
 const recipesDiv = document.querySelector(".recipes");
 const recipeNumberSpan = document.querySelector(".recipe-number span");
 const editContainer = document.querySelector(".edit-form");
@@ -243,12 +244,9 @@ box.addEventListener("click", (e) => {
 editCloseBtn.addEventListener("click", hideEditForm);
 
 form.addEventListener("submit", addRecipe);
-form.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && formIngredient === document.activeElement) {
-    e.preventDefault();
-    addIngredients(formIngredient, localIngredients);
-  }
-});
+addIngredientIcon.addEventListener("click", () =>
+  addIngredients(formIngredient, localIngredients)
+);
 
 // editForm.addEventListener("submit", editRecipe);
 // editForm.addEventListener("keydown", (e) => {
