@@ -8,135 +8,52 @@
     <title>Recipe App</title>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="logo">
-          <img src="./images//bibimbap.png" alt="logo" />
-          <h1>Recipe App</h1>
-        </div>
-        <div class="search-bar">
-          <div class="search">
-            <input type="text" placeholder="Search Receipe.." />
-            <svg
-              class="search-icon"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              ></path>
-            </svg>
+    <main>
+      <header>
+        <div class="container">
+          <div class="logo">
+            <img src="./images//bibimbap.png" alt="logo" />
+            <h1>Recipe App</h1>
           </div>
-        </div>
-      </div>
-    </header>
-
-    <section>
-      <div class="container">
-        <div class="hero">
-          <h2>All Recipes</h2>
-          <button id="add-form-btn">Create recipe</button>
-        </div>
-        <p class="recipe-number">Showing <span>5</span> recipes</p>
-        <div class="recipes">
-          <div class="recipe">
-            <div class="recipe-header">
-              <img src="./images/cutlery.png" alt="recipe" />
-              <h3 class="name">Classic Chocolate Chip Cookies</h3>
-            </div>
-            <div class="recipe-body">
-              <h5>Ingredients</h5>
-              <ul>
-                <li>3/4 cup packed brown sugar</li>
-                <li>1 teaspoon vanilla extract</li>
-                <li>2 large eggs</li>
-                <li>1 teaspoon baking soda</li>
-                <li>2 cups semisweet chocolate chips</li>
-              </ul>
-            </div>
-            <div class="footer">
-              <p class="date">2023-08-07 7:40pm</p>
-              <button>Procedure</button>
-            </div>
-          </div>
-
-          <div class="recipe">
-            <div class="recipe-header">
-              <img src="./images/cutlery.png" alt="recipe" />
-              <h3 class="name">Classic Chocolate Chip Cookies</h3>
-            </div>
-            <div class="recipe-body">
-              <h5>Ingredients</h5>
-              <ul>
-                <li>3/4 cup packed brown sugar</li>
-                <li>1 teaspoon vanilla extract</li>
-                <li>2 large eggs</li>
-                <li>1 teaspoon baking soda</li>
-                <li>2 cups semisweet chocolate chips</li>
-              </ul>
-            </div>
-            <div class="footer">
-              <p class="date">2023-08-07 7:40pm</p>
-              <button>Procedure</button>
-            </div>
-          </div>
-
-          <div class="recipe">
-            <div class="recipe-header">
-              <img src="./images/cutlery.png" alt="recipe" />
-              <h3 class="name">Classic Chocolate Chip Cookies</h3>
-            </div>
-            <div class="recipe-body">
-              <h5>Ingredients</h5>
-              <ul>
-                <li>3/4 cup packed brown sugar</li>
-                <li>1 teaspoon vanilla extract</li>
-                <li>2 large eggs</li>
-                <li>1 teaspoon baking soda</li>
-                <li>2 cups semisweet chocolate chips</li>
-              </ul>
-            </div>
-            <div class="footer">
-              <p class="date">2023-08-07 7:40pm</p>
-              <button>Procedure</button>
-            </div>
-          </div>
-
-          <div class="recipe">
-            <div class="recipe-header">
-              <img src="./images/cutlery.png" alt="recipe" />
-              <h3 class="name">Classic Chocolate Chip Cookies</h3>
-            </div>
-            <div class="recipe-body">
-              <h5>Ingredients</h5>
-              <ul>
-                <li>3/4 cup packed brown sugar</li>
-                <li>1 teaspoon vanilla extract</li>
-                <li>2 large eggs</li>
-                <li>1 teaspoon baking soda</li>
-                <li>2 cups semisweet chocolate chips</li>
-              </ul>
-            </div>
-            <div class="footer">
-              <p class="date">2023-08-07 7:40pm</p>
-              <button>Procedure</button>
+          <div class="search-bar">
+            <div class="search">
+              <input type="text" placeholder="Search Receipe.." />
+              <svg
+                class="search-icon"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                ></path>
+              </svg>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <footer>
-      <div class="container">
-        <p>&copy; Copyright 2023 | Group 2 @cwwtechafrica</p>
-      </div>
-    </footer>
+      <section>
+        <div class="container">
+          <div class="hero">
+            <h2>All Recipes</h2>
+            <button id="add-form-btn">Create recipe</button>
+          </div>
+          <p class="recipe-number">Showing <span>5</span> recipes</p>
+          <div class="recipes grid"></div>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <p>&copy; Copyright 2023 | Group 2 @cwwtechafrica</p>
+        </div>
+      </footer>
+    </main>
 
     <div class="add-form">
       <header>
@@ -147,28 +64,64 @@
       </header>
       <form>
         <div class="form-field">
-          <label>Title:</label>
-          <input type="text" id="title" />
+          <label>Name:</label>
+          <input type="text" id="name" placeholder="Recipe name..." />
         </div>
         <div class="form-field">
-          <label>Ingredients:</label>
+          <label>Ingredients: <span>(press enter to add more)</span></label>
           <div class="ingredients-box">
-            <input type="text" class="ingredients" />
+            <input type="text" id="ingredients" placeholder="Ingredients.." />
             <div class="box"></div>
           </div>
         </div>
         <div class="form-field">
-          <label>Title:</label>
-          <textarea rows="7"></textarea>
+          <label>Procedure:</label>
+          <textarea
+            rows="7"
+            placeholder="Write procedure..."
+            id="procedure"
+          ></textarea>
         </div>
         <button>Add recipe</button>
       </form>
     </div>
 
+    <div class="edit-form">
+      <header>
+        <div class="container">
+          <h2>Edit this Recipe</h2>
+          <button class="close-form-btn">Close</button>
+        </div>
+      </header>
+      <form>
+        <div class="form-field">
+          <label>Name:</label>
+          <input type="text" class="name" placeholder="Recipe name..." />
+        </div>
+        <div class="form-field">
+          <label>Ingredients: <span>(press enter to add more)</span></label>
+          <div class="ingredients-box">
+            <input type="text" class="ingredients" placeholder="Ingredients.." />
+            <div class="box"></div>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Procedure:</label>
+          <textarea
+            rows="7"
+            placeholder="Write procedure..."
+            class="procedure-textarea"
+          ></textarea>
+        </div>
+        <button>Add recipe</button>
+      </form>
+    </div>
+
+
     <div class="loader">
       <div class="container">
         <div class="loader-content">
-          <img src="./images//bibimbap.png" alt="loader">
+          <img src="./images//bibimbap.png" alt="loader" />
         </div>
       </div>
     </div>

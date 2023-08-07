@@ -120,7 +120,7 @@ section h2 {
   font-weight: 500;
 }
 
-.recipes {
+.recipes.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1rem;
@@ -206,7 +206,26 @@ footer {
   text-align: center;
 }
 
-.add-form {
+.actions {
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}
+
+.actions .delete,
+.actions .edit {
+  width: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.actions .delete:hover,
+.actions .edit:hover {
+  transform: scale(0.9);
+}
+
+.add-form,
+.edit-form {
   position: fixed;
   top: 0;
   left: 0;
@@ -214,15 +233,18 @@ footer {
   min-height: 100vh;
   background-color: #f2f2f2;
   z-index: 10;
+  overflow-y: auto;
   display: none;
   transition: all 0.5s ease-in-out;
 }
 
-.add-form.show {
+.add-form.show,
+.edit-form.show {
   display: block;
 }
 
-.add-form header .container {
+.add-form header .container,
+.edit-form header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -230,8 +252,8 @@ footer {
 
 form {
   width: 88%;
-  max-width: 400px;
-  margin: 2rem auto;
+  max-width: 500px;
+  margin: 1.3rem auto;
 }
 
 .form-field {
@@ -241,6 +263,11 @@ form {
 form label {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+form label span {
+  font-size: 0.9rem;
+  color: #444;
 }
 
 form input,
@@ -262,6 +289,33 @@ form input:focus,
 form textarea:focus {
   outline: none;
   border-color: #bb832e;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.box p {
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  padding: 0.4rem;
+  background-color: #ddd;
+  border-radius: 0.3rem;
+}
+
+.box p span:first-child {
+  color: crimson;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.box p span:last-child {
+  font-size: 0.94rem;
 }
 
 .loader {
@@ -305,6 +359,13 @@ form textarea:focus {
   }
 }
 
+.centered {
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
 /* .procedure {
   position: fixed;
   top: 0;
@@ -326,7 +387,7 @@ form textarea:focus {
     margin: auto;
   }
 
-  .recipes {
+  .recipes.grid {
     grid-template-columns: 1fr;
   }
 
