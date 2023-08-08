@@ -20,9 +20,12 @@ const editFormName = editForm.querySelector(".name");
 const editFormIngredient = editForm.querySelector(".ingredients");
 const editFormProcedure = editForm.querySelector(".procedure-textarea");
 const editBox = editForm.querySelector(".box");
+const editIngredientIcon = editForm.querySelector(".input-div img");
+const searchInput = document.querySelector(".search-bar input");
 
 let localIngredients = [];
 let ingredientsToEdit = [];
+let editId;
 
 // Primary functions
 
@@ -56,17 +59,62 @@ function addRecipe(e) {
   hideForm();
 }
 
+function editRecipe(e) {
+  e.preventDefault();
+
+  if (
+    !ingredientsToEdit.length ||
+    !editFormName.value ||
+    !editFormProcedure.value
+  ) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  let recipes = getRecipes();
+
+  const updatedRecipes = recipes.map((recipe) => {
+    if (recipe.id === editId) {
+      return {
+        ...recipe,
+        name: editFormName.value,
+        ingredients: ingredientsToEdit,
+        procedure: editFormProcedure.value,
+      };
+    } else {
+      return recipe;
+    }
+  });
+
+  saveRecipes(updatedRecipes);
+
+  editFormName.value = "";
+  editFormProcedure.value = "";
+  formIngredient.value = "";
+  ingredientsToEdit = [];
+  editBox.innerHTML = ``;
+  editId = "";
+
+  updateUI();
+  hideEditForm();
+}
+
 // User Interface functions
 
-function updateUI() {
-  const recipes = getRecipes();
+function updateUI(data, string) {
+  let recipes = getRecipes();
+  let message = !string ? "You have no recipes" : string;
 
   recipesDiv.innerHTML = ``;
   recipeNumberSpan.textContent = recipes.length;
 
+  if (data) {
+    recipes = data;
+  }
+
   if (recipes.length === 0) {
     recipesDiv.className = "recipes";
-    recipesDiv.innerHTML = `<div class="centered">You have no recipes</div>`;
+    recipesDiv.innerHTML = `<div class="centered">${message}</div>`;
     return;
   }
 
@@ -172,12 +220,13 @@ function getRecipe(id) {
   editFormName.value = recipe.name;
   editFormProcedure.value = recipe.procedure;
   editBox.innerHTML = ``;
+  editId = id;
 
   ingredientsToEdit = recipe.ingredients;
 
   ingredientsToEdit.forEach((item) => {
     const para = `<p>
-          <span class="delete" data-id="${item.id}">X</span>
+          <img class="delete" data-id="${item.id}" src="./images/trash.svg" />
           <span>${item.value}</span>
         </p>`;
     editBox.innerHTML += para;
@@ -188,16 +237,32 @@ function updateIngredient() {
   box.innerHTML = ``;
   localIngredients.forEach((item) => {
     const para = `<p>
-        <span class="delete" data-id="${item.id}">X</span>
+        <img class="delete" data-id="${item.id}" src="./images/trash.svg" />
         <span>${item.value}</span>
       </p>`;
     box.innerHTML += para;
   });
 }
 
+function updateEditIngredients() {
+  editBox.innerHTML = ``;
+  ingredientsToEdit.forEach((item) => {
+    const para = `<p>
+              <img class="delete" data-id="${item.id}" src="./images/trash.svg" />
+              <span>${item.value}</span>
+            </p>`;
+    editBox.innerHTML += para;
+  });
+}
+
 function deleteIngredient(id) {
   localIngredients = localIngredients.filter((item) => item.id !== id);
   updateIngredient();
+}
+
+function deleteEditIngredients(id) {
+  ingredientsToEdit = ingredientsToEdit.filter((item) => item.id !== id);
+  updateEditIngredients();
 }
 
 function addIngredients() {
@@ -215,15 +280,52 @@ function addIngredients() {
   updateIngredient();
 }
 
+function addToEditIngredients() {
+  if (!editFormIngredient.value) return;
+
+  const obj = {
+    id: crypto.randomUUID(),
+    value: editFormIngredient.value,
+  };
+
+  ingredientsToEdit = [obj, ...ingredientsToEdit];
+
+  editFormIngredient.value = "";
+  editFormIngredient.focus();
+  updateEditIngredients();
+}
+
+function searchRecipes() {
+  const recipes = getRecipes();
+
+  if (!searchInput.value) {
+    updateUI();
+    return;
+  }
+
+  searchedRecipe = recipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(searchInput.value.toLowerCase())
+  );
+
+  updateUI(searchedRecipe, "No recipe matched your search");
+}
+
 // Event Listeners
 
 addFormBtn.addEventListener("click", showForm);
 closeFormBtn.addEventListener("click", hideForm);
 
 box.addEventListener("click", (e) => {
-  if (e.target.tagName === "SPAN" && e.target.classList.contains("delete")) {
+  if (e.target.tagName === "IMG" && e.target.classList.contains("delete")) {
     const id = e.target.dataset.id;
     deleteIngredient(id);
+  }
+});
+
+editBox.addEventListener("click", (e) => {
+  if (e.target.tagName === "IMG" && e.target.classList.contains("delete")) {
+    const id = e.target.dataset.id;
+    deleteEditIngredients(id);
   }
 });
 
@@ -233,6 +335,9 @@ form.addEventListener("submit", addRecipe);
 addIngredientIcon.addEventListener("click", () =>
   addIngredients(formIngredient, localIngredients)
 );
+
+editForm.addEventListener("submit", editRecipe);
+editIngredientIcon.addEventListener("click", addToEditIngredients);
 
 recipesDiv.addEventListener("click", (e) => {
   if (e.target.tagName === "IMG" && e.target.classList.contains("delete")) {
@@ -246,7 +351,9 @@ recipesDiv.addEventListener("click", (e) => {
   }
 });
 
+searchInput.addEventListener("input", searchRecipes);
+
 window.addEventListener("load", () => {
-    showHideLoader();
-    updateUI();
+  showHideLoader();
+  updateUI();
 });

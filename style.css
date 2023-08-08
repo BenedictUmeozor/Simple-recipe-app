@@ -319,9 +319,8 @@ form textarea:focus {
   border-radius: 0.3rem;
 }
 
-.box p span:first-child {
-  color: crimson;
-  font-size: 1.2rem;
+.box p img {
+  width: 1.2rem;
   cursor: pointer;
 }
 
@@ -377,10 +376,11 @@ form textarea:focus {
   margin: 2rem auto;
 }
 
-/* .procedure {
-  position: fixed;
-  top: 0;
-} */
+@media (max-width: 900px) {
+  .recipes.grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
 @media (max-width: 768px) {
   header .container {
