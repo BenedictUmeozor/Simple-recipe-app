@@ -186,6 +186,7 @@ section h2 {
 
 .recipe button,
 .add-form header button,
+.edit-form header button,
 form button {
   padding: 0.3rem 0.6rem;
   border-radius: 0.2rem;
@@ -197,6 +198,7 @@ form button {
 
 .recipe button:hover,
 .add-form header button:hover,
+.edit-form header button:hover,
 form button:hover {
   background-color: #fff;
   color: #bb832e;
@@ -261,6 +263,9 @@ footer {
   justify-content: space-between;
 }
 
+.edit-form header button {
+}
+
 form {
   width: 88%;
   max-width: 500px;
@@ -286,6 +291,7 @@ form textarea {
   width: 100%;
   appearance: none;
   border: 1.5px solid #ccc;
+  border-radius: 3px;
 }
 
 form input {

@@ -106,11 +106,12 @@ function updateUI(data, string) {
   let message = !string ? "You have no recipes" : string;
 
   recipesDiv.innerHTML = ``;
-  recipeNumberSpan.textContent = recipes.length;
-
+  
   if (data) {
     recipes = data;
   }
+
+  recipeNumberSpan.textContent = recipes.length;
 
   if (recipes.length === 0) {
     recipesDiv.className = "recipes";
@@ -258,11 +259,13 @@ function updateEditIngredients() {
 function deleteIngredient(id) {
   localIngredients = localIngredients.filter((item) => item.id !== id);
   updateIngredient();
+  formIngredient.focus();
 }
 
 function deleteEditIngredients(id) {
   ingredientsToEdit = ingredientsToEdit.filter((item) => item.id !== id);
   updateEditIngredients();
+  editFormIngredient.focus()
 }
 
 function addIngredients() {
