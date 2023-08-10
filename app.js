@@ -22,6 +22,10 @@ const editFormProcedure = editForm.querySelector(".procedure-textarea");
 const editBox = editForm.querySelector(".box");
 const editIngredientIcon = editForm.querySelector(".input-div img");
 const searchInput = document.querySelector(".search-bar input");
+const procedureDiv = document.querySelector(".procedure");
+const procedureH3 = procedureDiv.querySelector("h3");
+const procedureContentElement = procedureDiv.querySelector("p");
+const procedureBtn = procedureDiv.querySelector("button");
 
 let localIngredients = [];
 let ingredientsToEdit = [];
@@ -106,7 +110,7 @@ function updateUI(data, string) {
   let message = !string ? "You have no recipes" : string;
 
   recipesDiv.innerHTML = ``;
-  
+
   if (data) {
     recipes = data;
   }
@@ -142,7 +146,7 @@ function updateUI(data, string) {
         <img class="edit" data-id="${recipe.id}" src="./images/edit.svg" alt="edit" />
         <img class="delete" data-id="${recipe.id}" src="./images/trash.svg" alt="delete" />
       </div>
-      <button>Procedure</button>
+      <button class="show-procedure" data-id="${recipe.id}">Procedure</button>
     </div>
   </div>`;
 
@@ -154,7 +158,7 @@ function hideForm() {
   loader.classList.add("show");
   formContainer.classList.remove("show");
   setTimeout(() => {
-    main.style.display = "block";
+    main.style.display = "grid";
     loader.classList.remove("show");
   }, 1500);
 }
@@ -183,7 +187,7 @@ function hideEditForm() {
   loader.classList.add("show");
   editContainer.classList.remove("show");
   setTimeout(() => {
-    main.style.display = "block";
+    main.style.display = "grid";
     loader.classList.remove("show");
   }, 1500);
 }
@@ -192,9 +196,21 @@ function showHideLoader() {
   loader.classList.add("show");
   main.style.display = "none";
   setTimeout(() => {
-    main.style.display = "block";
+    main.style.display = "grid";
     loader.classList.remove("show");
   }, 2000);
+}
+
+function showProcedureDiv(id) {
+  const recipes = getRecipes();
+  const recipe = recipes.find((recipe) => recipe.id === id);
+  procedureH3.textContent = recipe.name;
+  procedureContentElement.textContent = recipe.procedure;
+  procedureDiv.classList.add("show")
+}
+
+function hideProcedureDiv() {
+  procedureDiv.classList.remove("show");
 }
 
 // Utils
@@ -265,7 +281,7 @@ function deleteIngredient(id) {
 function deleteEditIngredients(id) {
   ingredientsToEdit = ingredientsToEdit.filter((item) => item.id !== id);
   updateEditIngredients();
-  editFormIngredient.focus()
+  editFormIngredient.focus();
 }
 
 function addIngredients() {
@@ -352,7 +368,17 @@ recipesDiv.addEventListener("click", (e) => {
     showEditForm(e.target.dataset.id);
     return;
   }
+
+  if (
+    e.target.tagName === "BUTTON" &&
+    e.target.classList.contains("show-procedure")
+  ) {
+    console.log(e.target.dataset.id);
+    showProcedureDiv(e.target.dataset.id);
+  }
 });
+
+procedureBtn.addEventListener("click", hideProcedureDiv);
 
 searchInput.addEventListener("input", searchRecipes);
 

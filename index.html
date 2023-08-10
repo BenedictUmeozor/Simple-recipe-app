@@ -48,6 +48,7 @@
           <div class="recipes grid"></div>
         </div>
       </section>
+
       <footer>
         <div class="container">
           <p>&copy; Copyright 2023 | Group 2 @cwwtechafrica</p>
@@ -72,7 +73,7 @@
           <div class="ingredients-box">
             <div class="input-div">
               <input type="text" id="ingredients" placeholder="Ingredients.." />
-              <img class="add" src="./images/add.svg" alt="add">
+              <img class="add" src="./images/add.svg" alt="add" />
             </div>
             <div class="box"></div>
           </div>
@@ -105,8 +106,12 @@
           <label>Ingredients: <span>(click icon to add more)</span></label>
           <div class="ingredients-box">
             <div class="input-div">
-              <input type="text" class="ingredients" placeholder="Ingredients.." />
-              <img src="./images/add.svg" alt="add">
+              <input
+                type="text"
+                class="ingredients"
+                placeholder="Ingredients.."
+              />
+              <img src="./images/add.svg" alt="add" />
             </div>
             <div class="box"></div>
           </div>
@@ -123,7 +128,6 @@
       </form>
     </div>
 
-
     <div class="loader">
       <div class="container">
         <div class="loader-content">
@@ -131,6 +135,23 @@
         </div>
       </div>
     </div>
-    <div class="procedure"></div>
+    <div class="procedure">
+      <div class="modal">
+        <div class="modal-header">
+          <img src="./images/cutlery.png" alt="cutlery">
+          <h3>Rice and beans</h3>
+        </div>
+        <div class="modal-body">
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi
+            neque error sunt nemo ipsa corrupti voluptatum, ad voluptates esse
+            autem.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button>Close</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

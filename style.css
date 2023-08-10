@@ -20,6 +20,12 @@ button {
   margin: auto;
 }
 
+main {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
 header {
   background-color: #eee;
   padding: 1.5rem 0;
@@ -134,7 +140,8 @@ section h2 {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.recipe-header {
+.recipe-header,
+.modal-header {
   background-color: #f2f2f2;
   padding: 1rem;
   display: flex;
@@ -143,16 +150,20 @@ section h2 {
   border-bottom: 1px solid #ddd;
 }
 
-.recipe-header img {
+.recipe-header img,
+.modal-header img {
   width: 1.6rem;
 }
 
-.recipe-header h3 {
+.recipe-header h3,
+.modal-header h3 {
   font-size: 1.2rem;
   color: #bb832e;
 }
 
-.recipe-body {
+.recipe-body,
+.modal-body,
+.modal-footer {
   padding: 1rem;
 }
 
@@ -179,15 +190,11 @@ section h2 {
   border-top: 1px solid #ddd;
 }
 
-.recipe .date {
-  font-size: 0.97rem;
-  color: #333;
-}
-
 .recipe button,
 .add-form header button,
 .edit-form header button,
-form button {
+form button,
+.modal button {
   padding: 0.3rem 0.6rem;
   border-radius: 0.2rem;
   border: 1px solid #bb832e;
@@ -199,7 +206,8 @@ form button {
 .recipe button:hover,
 .add-form header button:hover,
 .edit-form header button:hover,
-form button:hover {
+form button:hover,
+.modal button:hover {
   background-color: #fff;
   color: #bb832e;
 }
@@ -382,6 +390,33 @@ form textarea:focus {
   width: 90%;
   max-width: 900px;
   margin: 2rem auto;
+}
+
+.procedure {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.procedure.show {
+  display: flex;
+}
+
+.modal {
+  width: 75%;
+  max-width: 400px;
+  margin: auto;
+  background-color: #fafafa;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 900px) {
