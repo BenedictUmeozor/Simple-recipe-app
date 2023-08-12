@@ -206,7 +206,7 @@ function showProcedureDiv(id) {
   const recipe = recipes.find((recipe) => recipe.id === id);
   procedureH3.textContent = recipe.name;
   procedureContentElement.textContent = recipe.procedure;
-  procedureDiv.classList.add("show")
+  procedureDiv.classList.add("show");
 }
 
 function hideProcedureDiv() {
@@ -355,6 +355,20 @@ addIngredientIcon.addEventListener("click", () =>
   addIngredients(formIngredient, localIngredients)
 );
 
+form.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addIngredients();
+  }
+});
+
+editForm.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addToEditIngredients();
+  }
+});
+
 editForm.addEventListener("submit", editRecipe);
 editIngredientIcon.addEventListener("click", addToEditIngredients);
 
@@ -382,7 +396,7 @@ procedureBtn.addEventListener("click", hideProcedureDiv);
 
 searchInput.addEventListener("input", searchRecipes);
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   showHideLoader();
   updateUI();
 });
